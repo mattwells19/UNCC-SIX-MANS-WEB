@@ -18,7 +18,7 @@ const Winners: NextPage<{ data: Array<Season> }> = ({ data }) => {
             <p>{semester}</p>
             <ul>
               {winners.map((winner) => (
-                <li>
+                <li key={winner.name}>
                   <p>{winner.title}</p>
                   <p>{winner.name}</p>
                   {winner.mmr ? <p>{winner.mmr}</p> : null}
@@ -41,7 +41,6 @@ export async function getStaticProps() {
 
   return {
     props: data,
-    revalidate: 10,
   };
 }
 
