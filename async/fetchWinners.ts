@@ -8,6 +8,7 @@ type Pages = {
 
 type SeasonWinner = {
   title: number;
+  mmr: number | null;
   name: string;
   wins: number;
   losses: number;
@@ -52,6 +53,7 @@ export default async function (): Promise<{ data: Array<Season> }> {
         res.results.map(({ properties }: { properties: any }) => ({
           losses: properties.Losses.number,
           matchesPlayed: properties.MatchesPlayed.formula.number,
+          mmr: properties.MMR ? properties.MMR.number : null,
           name: properties.Name.rich_text[0].text.content,
           title: properties.Title.title[0].text.content,
           winPerc: properties.WinPerc.formula.number * 100,
