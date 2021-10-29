@@ -33,7 +33,10 @@ export default async function (): Promise<{ data: Array<Season> }> {
   const client = new Client({ auth: process.env.notion_token });
 
   const pages: Array<Pages> = await client.databases
-    .query({ database_id: process.env.winners_table_id ?? "" })
+    .query({
+      database_id: process.env.winners_table_id ?? "",
+      sorts: [{ direction: "descending", property: "SeasonEnded" }],
+    })
     .then((res) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return res.results.map(({ properties }: { properties: any }) => ({
