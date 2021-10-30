@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
-import { Season } from "../async/fetchWinners";
-import PlayerTable from "./PlayerTable";
+import { Season } from "../../async/fetchWinners";
+import PlayerTable from "../PlayerTable";
 import styles from "./Accordion.module.scss";
-import ArrowIcon from "../icons/ArrowIcon";
-import useBoundingBox from "../hooks/useRect";
+import ArrowIcon from "../../icons/ArrowIcon";
+import useBoundingBox from "../../hooks/useRect";
 
 interface IAccordionProps {
   tableContent: Season;
@@ -21,7 +21,7 @@ const Accordion = ({ defaultExpanded = false, tableContent }: IAccordionProps) =
         <button aria-expanded={expanded} onClick={() => setExpanded(prev => !prev)}>
           <ArrowIcon width={25} fill="currentColor" transform={`rotate(${expanded ? "0" : "-90"})`} />
           <span>{tableContent.semester}</span>
-          <span className={styles.seasonEnded}>Season Ended: <wbr/>{tableContent.seasonEnded}</span>
+          <span className={styles.seasonEnded}>Season Ended: <wbr />{tableContent.seasonEnded}</span>
         </button>
       </h2>
       <div

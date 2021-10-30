@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Player } from "../async/fetchLeaderboard";
+import { Player } from "../../async/fetchLeaderboard";
 import styles from "./PlayerTable.module.scss";
 
 type RowData = Omit<Player, "mmr"> & {

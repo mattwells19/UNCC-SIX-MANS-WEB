@@ -1,4 +1,4 @@
-@import "../styles/breakpoints.scss";
+@import "../../styles/breakpoints.scss";
 
 .playerTable {
   width: max(30rem, 100%);
@@ -20,21 +20,10 @@
   td {
     border-bottom: 1px solid var(--grey-300);
     font-weight: normal;
-
     padding: 0.5rem;
-    @include responsive {
-      padding: 0.25rem;
-    }
   }
 
   th {
     white-space: nowrap;
-    @include responsive {
-      font-size: 0.9rem;
-    }
-  }
-
-  td {
-    font-size: 0.8rem;
   }
 }
