@@ -1,0 +1,29 @@
+@import "../../styles/breakpoints.scss";
+
+.playerTable {
+  width: max(30rem, 100%);
+  border-spacing: 1em 10px;
+  border-collapse: collapse;
+  background-color: var(--grey-200);
+  overflow: auto;
+  border: none;
+
+  .mutedText {
+    color: var(--grey-500);
+  }
+
+  thead {
+    background-color: var(--grey-400);
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid var(--grey-300);
+    font-weight: normal;
+    padding: 0.5rem;
+  }
+
+  th {
+    white-space: nowrap;
+  }
+}
