@@ -11,7 +11,7 @@ interface IPlayerTableProps {
 }
 
 const PlayerTable = forwardRef<HTMLTableElement, IPlayerTableProps>(({ tableData }, ref) => {
-  const hasMmr = Boolean(tableData[0].mmr);
+  const hasMmr = tableData.length > 0 ? Boolean(tableData[0].mmr) : true;
 
   return (
     <table className={styles.playerTable} ref={ref}>

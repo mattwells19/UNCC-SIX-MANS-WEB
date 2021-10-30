@@ -1,0 +1,10 @@
+.leaderboard {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.leaderboardTable {
+  overflow-x: auto;
+}
