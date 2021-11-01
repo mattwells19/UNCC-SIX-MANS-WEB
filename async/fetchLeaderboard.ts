@@ -1,6 +1,7 @@
 import { Client } from "@notionhq/client";
 
 export type Player = {
+  rank: number;
   mmr: number;
   name: string;
   wins: number;
@@ -22,11 +23,12 @@ export default async function (): Promise<{ data: Array<Player> }> {
     })
     .then((res) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      return res.results.map(({ properties }: { properties: any }) => ({
+      return res.results.map(({ properties }: { properties: any }, index) => ({
         losses: properties.Losses.number,
         matchesPlayed: properties.MatchesPlayed.formula.number,
         mmr: properties.MMR.number,
         name: properties.Name.rich_text[0].text.content,
+        rank: index + 1,
         winPerc: properties.WinPerc.formula.number * 100,
         wins: properties.Wins.number,
       }));

@@ -8,6 +8,7 @@ type Pages = {
 
 type SeasonWinner = {
   title: number;
+  rank: number;
   mmr: number | null;
   name: string;
   wins: number;
@@ -53,11 +54,12 @@ export default async function (): Promise<{ data: Array<Season> }> {
       .query({ database_id: page.pageId, sorts: [{ direction: "ascending", property: "Title" }] })
       .then((res) =>
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        res.results.map(({ properties }: { properties: any }) => ({
+        res.results.map(({ properties }: { properties: any }, index) => ({
           losses: properties.Losses.number,
           matchesPlayed: properties.MatchesPlayed.formula.number,
           mmr: properties.MMR ? properties.MMR.number : null,
           name: properties.Name.rich_text[0].text.content,
+          rank: index + 1,
           title: properties.Title.title[0].text.content,
           winPerc: properties.WinPerc.formula.number * 100,
           wins: properties.Wins.number,
