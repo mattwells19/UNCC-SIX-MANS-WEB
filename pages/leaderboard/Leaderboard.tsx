@@ -34,7 +34,7 @@ const Leaderboard: NextPage<LeaderboardProps> = ({ data }) => {
             onChange={(e) => setSearch(e.target.value)}
           />
           <div className={styles.leaderboardTable}>
-            <PlayerTable tableData={filteredData} />
+            <PlayerTable enableSort tableData={filteredData} />
           </div>
         </section>
       </main>
