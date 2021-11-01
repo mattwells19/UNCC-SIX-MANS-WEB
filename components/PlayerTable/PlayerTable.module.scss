@@ -16,6 +16,7 @@
     background-color: var(--grey-400);
     position: sticky;
     top: 0;
+    box-shadow: 0px 3px 6px var(--grey-200);
   }
 
   th,
@@ -27,7 +28,10 @@
 
   th {
     white-space: nowrap;
-    padding: 0;
+
+    &[data-sortable] {
+      padding: 0;
+    }
 
     button {
       background-color: transparent;
@@ -38,9 +42,18 @@
       color: inherit;
       font: inherit;
       text-align: inherit;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      transition: box-shadow linear 50ms;
+
+      svg {
+        color: var(--whiteAlpha-500);
+      }
 
       &:hover {
-        background-color: var(--grey-500);
+        box-shadow: 0px 0px 0px 3px inset var(--focus-ring);
       }
     }
   }

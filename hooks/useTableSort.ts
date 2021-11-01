@@ -1,25 +1,25 @@
 import { useState } from "react";
 
-interface ITableSort<T> {
+export interface ITableSort<T> {
   column: keyof T;
   direction: "ascending" | "descending";
 }
 
-interface IUseTableSort<T> {
+export interface IUseTableSort<T> {
   sortedData: Array<T>;
   handleHeaderClick: (clickedHeader: keyof T) => void;
   currentSort: ITableSort<T> | null;
 }
 
-export default function useTableSort<T>(data: Array<T>): IUseTableSort<T> {
-  const [tableSort, setTableSort] = useState<ITableSort<T> | null>(null);
+export default function useTableSort<T>(data: Array<T>, defaultSort?: ITableSort<T>): IUseTableSort<T> {
+  const [tableSort, setTableSort] = useState<ITableSort<T> | null>(defaultSort ?? null);
 
   function handleHeaderClick(clickedHeader: keyof T) {
     if (tableSort && tableSort.column === clickedHeader) {
       if (tableSort.direction === "ascending") {
         setTableSort({ column: clickedHeader, direction: "descending" });
       } else {
-        setTableSort(null);
+        setTableSort(defaultSort ?? null);
       }
     } else {
       setTableSort({ column: clickedHeader, direction: "ascending" });
