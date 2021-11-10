@@ -15,16 +15,14 @@ const Winners: NextPage<WinnersProps> = ({ data }) => {
         <title>Hall of Fame | Six Mans | UNCC Rocket League Esports</title>
       </Head>
 
-      <main>
-        <h1>Hall of Fame</h1>
-        <p>Top 5 players from previous Six Man seasons.</p>
-        <hr />
-        <section className={styles.winnerAccordions}>
-          {data.map((season, index) => (
-            <Accordion defaultExpanded={index === 0} key={season.semester} tableContent={season} />
-          ))}
-        </section>
-      </main>
+      <h1>Hall of Fame</h1>
+      <p>Top 5 players from previous Six Man seasons.</p>
+      <hr />
+      <section className={styles.winnerAccordions}>
+        {data.map((season, index) => (
+          <Accordion defaultExpanded={index === 0} key={season.semester} tableContent={season} />
+        ))}
+      </section>
     </>
   );
 };

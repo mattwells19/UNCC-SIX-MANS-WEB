@@ -1,21 +1,7 @@
-@mixin button {
-  background-color: transparent;
-  border: none;
-  padding: 0.5rem;
-  border-radius: 4px;
-  display: grid;
-  place-items: center;
-
-  &:hover {
-    background-color: var(--grey-250);
-  }
-}
-
 .hambugerMenu {
   position: absolute;
   top: 0.5rem;
   left: 0.5rem;
-  @include button;
 }
 
 .navbar {
@@ -25,6 +11,7 @@
   height: 100%;
   background-color: var(--navBg);
   z-index: 2;
+  width: 15rem;
   transform: translateX(-100%);
   transition: transform ease-in 150ms;
 
@@ -35,38 +22,25 @@
   .navHeader {
     font-size: 1.3rem;
     padding: 0.5rem 1rem;
-    font-weight: 500;
+    font-weight: bold;
+    font-family: Play;
     display: flex;
+    justify-content: space-between;
     gap: 6px;
     align-items: center;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
-
-    button {
-      @include button;
-    }
   }
 
   ul {
     list-style: none;
     padding: 0;
     margin: 1rem;
-
-    li {
-      padding: 0.4rem 0.5rem;
-      width: 100%;
-      border-radius: 5px;
-      color: var(--whiteAlpha-500);
-      margin-top: 0.25rem;
-      font-size: 1.2rem;
-
-      &.active {
-        color: var(--white);
-        background-color: var(--grey-250);
-      }
-
-      &:hover {
-        background-color: var(--grey-250);
-      }
-    }
   }
+}
+
+.credit {
+  position: absolute;
+  bottom: 0;
+  margin: 1rem;
+  color: var(--whiteAlpha-500);
 }
