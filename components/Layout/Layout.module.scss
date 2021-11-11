@@ -1,8 +1,6 @@
 @import "../../styles/breakpoints.scss";
 
 .main {
-  flex: 1;
-
   section {
     margin: auto;
     padding: 1rem 3rem;
@@ -15,6 +13,11 @@
 }
 
 .content {
-  display: flex;
-  height: 100vh;
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-template-rows: 100vh;
+
+  @include responsive(1200px) {
+    display: block;
+  }
 }
