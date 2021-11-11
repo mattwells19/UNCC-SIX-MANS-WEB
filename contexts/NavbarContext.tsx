@@ -1,4 +1,4 @@
-import { createContext, Dispatch, FC, SetStateAction, useContext, useEffect, useState } from "react";
+import { createContext, Dispatch, FC, SetStateAction, useContext, useState } from "react";
 
 interface INavbarContextValue {
   open: boolean;
@@ -9,12 +9,6 @@ const NavbarContext = createContext<INavbarContextValue | null>(null);
 
 const NavbarProvider: FC = ({ children }) => {
   const [open, setOpen] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (window && window.document.body.clientWidth > 1100) {
-      setOpen(true);
-    }
-  }, []);
 
   return (
     <NavbarContext.Provider value={{ open, setOpen }}>

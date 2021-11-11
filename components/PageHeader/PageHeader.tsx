@@ -2,7 +2,7 @@ import styles from "./PageHeader.module.scss";
 import Head from "next/head";
 import IconButton from "../IconButton";
 import HamburgerIcon from "../../icons/HamburgerIcon";
-import { useNavbar } from "../../contexts/NavBarContext";
+import { useNavbar } from "../../contexts/NavbarContext";
 import NavIcon from "../../icons/NavIcon";
 
 interface IPageHeaderProps {
