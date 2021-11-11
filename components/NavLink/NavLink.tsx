@@ -15,7 +15,7 @@ const NavLink: FC<NavLinkProps> = ({ children, href }) => {
   return (
     <Link href={href} passHref>
       <a className={classNames(styles.content, { [styles.active]: router.route === href })}>
-        <NavIcon color="var(--whiteAlpha-500)" width="1.2rem" height="1.2rem" />
+        <NavIcon width="1.2rem" height="1.2rem" />
         {children}
       </a>
     </Link>

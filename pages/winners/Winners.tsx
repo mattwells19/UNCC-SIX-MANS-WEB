@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import fetchWinners, { Season } from "../../async/fetchWinners";
 import Accordion from "../../components/Accordion";
+import PageHeader from "../../components/PageHeader";
 import styles from "./Winners.module.scss";
 
 interface WinnersProps {
@@ -11,13 +11,7 @@ interface WinnersProps {
 const Winners: NextPage<WinnersProps> = ({ data }) => {
   return (
     <>
-      <Head>
-        <title>Hall of Fame | Six Mans | UNCC Rocket League Esports</title>
-      </Head>
-
-      <h1>Hall of Fame</h1>
-      <p>Top 5 players from previous Six Man seasons.</p>
-      <hr />
+      <PageHeader title="Hall of Fame" description="Top 5 players from previous Six Man seasons." />
       <section className={styles.winnerAccordions}>
         {data.map((season, index) => (
           <Accordion defaultExpanded={index === 0} key={season.semester} tableContent={season} />

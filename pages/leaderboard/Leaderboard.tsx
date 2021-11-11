@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import { useMemo, useState } from "react";
 import fetchLeaderboard, { Player } from "../../async/fetchLeaderboard";
+import PageHeader from "../../components/PageHeader";
 import PlayerTable from "../../components/PlayerTable";
 import SearchInput from "../../components/SearchInput";
 import styles from "./Leaderboard.module.scss";
@@ -18,13 +18,7 @@ const Leaderboard: NextPage<LeaderboardProps> = ({ data }) => {
 
   return (
     <>
-      <Head>
-        <title>Leaderboard | Six Mans | UNCC Rocket League Esports</title>
-      </Head>
-
-      <h1>Leaderboard</h1>
-      <p>The leaderboard for the current six mans season.</p>
-      <hr />
+      <PageHeader title="Leaderboard" description="The leaderboard for the current six mans season." />
       <section className={styles.leaderboard}>
         <SearchInput
           id="playerSearchField"

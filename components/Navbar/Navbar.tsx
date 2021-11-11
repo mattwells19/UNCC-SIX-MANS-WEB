@@ -1,56 +1,56 @@
+import { useEffect, useRef } from "react";
+import classNames from "classnames";
 import styles from "./Navbar.module.scss";
 import NavLink from "../NavLink";
-import { useEffect, useState } from "react";
-import classNames from "classnames";
-import HamburgerIcon from "../../icons/HamburgerIcon";
 import CloseIcon from "../../icons/CloseIcon";
 import IconButton from "../IconButton";
+import { useNavbar } from "../../contexts/NavBarContext";
 
 const Navbar = () => {
-  const [open, setOpen] = useState<boolean>(false);
+  const { open, setOpen } = useNavbar();
+  const closeBtnRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
-    if (window && window.document.body.clientWidth > 1100) {
-      setOpen(true);
+    if (closeBtnRef.current && open) {
+      closeBtnRef.current.focus();
     }
-  }, []);
-  
+  }, [open]);
+
   return (
-    <>
-      <IconButton className={styles.hambugerMenu} onClick={() => setOpen(true)} title="Open navigation drawer.">
-        <HamburgerIcon />
-      </IconButton>
-      <nav className={classNames(styles.navbar, {[styles.open]: open})}>
-        <div className={styles.navHeader}>
-          <span>
-            UNCC 6 Mans
-          </span>
-          <IconButton onClick={() => setOpen(false)} title="Close navigation drawer.">
-            <CloseIcon />
-          </IconButton>
-        </div>
-        <ul>
-          <li>
-            <NavLink href="/">
-              general
-            </NavLink>
-          </li>
-          <li>
-            <NavLink href="/leaderboard">
-              leaderboard
-            </NavLink>
-          </li>
-          <li>
-            <NavLink href="/winners">
-              hall-of-fame
-            </NavLink>
-          </li>
-        </ul>
-        <div className={styles.credit}>
-          <span>Website made by Matt Wells</span>
-        </div>
-      </nav>
-    </>
+    <aside aria-hidden={!open} className={classNames(styles.navbar, {[styles.open]: open})}>
+      {open ? (
+        <>
+          <div className={styles.navHeader}>
+            <h1>
+              UNCC 6 Mans
+            </h1>
+            <IconButton ref={closeBtnRef} onClick={() => setOpen(false)} title="Close navigation drawer.">
+              <CloseIcon />
+            </IconButton>
+          </div>
+          <nav>
+            <ul>
+              <li>
+                <NavLink href="/">
+                  general
+                </NavLink>
+              </li>
+              <li>
+                <NavLink href="/leaderboard">
+                  leaderboard
+                </NavLink>
+              </li>
+              <li>
+                <NavLink href="/winners">
+                  hall-of-fame
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+          <span className={styles.credit}>Website made by Matt Wells</span>
+        </>
+      ) : null}
+    </aside>
   );
 };
 
