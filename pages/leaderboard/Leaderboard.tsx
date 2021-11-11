@@ -17,28 +17,26 @@ const Leaderboard: NextPage<LeaderboardProps> = ({ data }) => {
   ), [search, data]);
 
   return (
-    <div>
+    <>
       <Head>
         <title>Leaderboard | Six Mans | UNCC Rocket League Esports</title>
       </Head>
 
-      <main>
-        <h1>Leaderboard</h1>
-        <p>The leaderboard for the current six mans season.</p>
-        <hr />
-        <section className={styles.leaderboard}>
-          <SearchInput
-            id="playerSearchField"
-            label="Type to search for a player."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <div className={styles.leaderboardTable}>
-            <PlayerTable enableSort tableData={filteredData} />
-          </div>
-        </section>
-      </main>
-    </div>
+      <h1>Leaderboard</h1>
+      <p>The leaderboard for the current six mans season.</p>
+      <hr />
+      <section className={styles.leaderboard}>
+        <SearchInput
+          id="playerSearchField"
+          label="Type to search for a player."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <div className={styles.leaderboardTable}>
+          <PlayerTable enableSort tableData={filteredData} />
+        </div>
+      </section>
+    </>
   );
 };
 

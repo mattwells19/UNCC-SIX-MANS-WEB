@@ -11,6 +11,7 @@
   --white: #fff;
 
   --focus-ring: #4199e0;
+  --navBg: #2f3136;
 }
 
 html,
@@ -40,16 +41,6 @@ a {
 
 hr {
   border: 1px solid var(--grey-400);
-}
-
-main {
-  margin: auto;
-  padding: 1rem 3rem;
-  max-width: clamp(30rem, 100%, 60rem);
-  @include responsive {
-    padding: 1rem;
-    max-width: none;
-  }
 }
 
 * {
