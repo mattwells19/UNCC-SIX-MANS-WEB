@@ -7,7 +7,7 @@ const Embed: FC = ({ children }) => {
   return (
     <div className={styles.embed}>
       <div className={styles.avatar}>
-        <Image priority src={NormImg} alt="Norm" width="75" height="75" />
+        <Image priority src={NormImg} alt="Norm" layout="responsive" />
       </div>
       <div className={styles.embedHead}>
         <span className={styles.name}>Norm</span>
