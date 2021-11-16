@@ -15,7 +15,7 @@
   transition: transform ease-in 150ms;
 
   @include responsive($maxWidth: 1200px) {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
 

@@ -30,7 +30,7 @@ const Navbar = () => {
         <nav>
           <ul>
             <li>
-              <NavLink href="/">
+              <NavLink href="/general">
                 general
               </NavLink>
             </li>

@@ -1,6 +1,8 @@
 @import "../../styles/breakpoints.scss";
 
 .main {
+  overflow: auto;
+
   section {
     margin: auto;
     padding: 1rem 3rem;
