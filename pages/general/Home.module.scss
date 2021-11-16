@@ -1,0 +1,16 @@
+section.home {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  flex-direction: column;
+  padding-bottom: 5rem;
+
+  p {
+    margin-top: 1rem;
+    margin-bottom: 0px;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+}
