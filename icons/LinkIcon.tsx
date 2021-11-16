@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-const ArrowIcon = (props: SVGProps<SVGSVGElement>) => {
+const LinkIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <g clipPath="url(#clip0_123_100)">
@@ -16,6 +16,6 @@ const ArrowIcon = (props: SVGProps<SVGSVGElement>) => {
   );
 };
 
-export default ArrowIcon;
+export default LinkIcon;
 
 
