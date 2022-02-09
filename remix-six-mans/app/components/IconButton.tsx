@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, forwardRef } from "react";
 import { LinksFunction } from "remix";
-import styles from "~/styles/iconButton.css";
+import styles from "~/styles/icon-button.css";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: styles }];

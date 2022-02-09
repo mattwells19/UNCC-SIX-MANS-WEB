@@ -1,7 +1,12 @@
 import { forwardRef } from "react";
 import Th from "./Th";
 import useTableSort from "../../hooks/useTableSort";
-import styles from "./PlayerTable.module.scss";
+import styles from "~/styles/player-table.css";
+import { LinksFunction } from "remix";
+
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: styles }];
+};
 
 export interface Player {
   rank: number;
@@ -33,7 +38,7 @@ const PlayerTable = forwardRef<HTMLTableElement, IPlayerTableProps>(({ tableData
   };
 
   return (
-    <table className={styles.playerTable} ref={ref}>
+    <table className="playerTable" ref={ref}>
       <thead>
         <tr>
           <Th field="rank" align="center" {...commonThProps}>
@@ -70,7 +75,7 @@ const PlayerTable = forwardRef<HTMLTableElement, IPlayerTableProps>(({ tableData
               <td align="center">{player.rank}</td>
               <td align="left">
                 {playerName}
-                <span className={styles.mutedText}>#{discordIdentifier}</span>
+                <span className="mutedText">#{discordIdentifier}</span>
               </td>
               {hasMmr ? <td align="center">{player.mmr}</td> : null}
               <td align="center">{player.wins}</td>

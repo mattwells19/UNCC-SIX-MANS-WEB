@@ -1,9 +1,9 @@
-import styles from "~/styles/pageHeader.css";
+import styles from "~/styles/page-header.css";
 import IconButton, { links as iconBtnLinks } from "./IconButton";
 import HamburgerIcon from "../icons/HamburgerIcon";
 // import { useNavbar } from "../../../contexts/NavbarContext";
 import NavIcon from "../icons/NavIcon";
-import { LinksFunction, MetaFunction } from "remix";
+import { LinksFunction } from "remix";
 
 interface IPageHeaderProps {
   title: string;

@@ -1,59 +1,86 @@
-import { LinksFunction, LoaderFunction, useLoaderData } from "remix";
+import { LinksFunction, LoaderFunction, MetaFunction, useLoaderData } from "remix";
 import styles from "~/styles/winners.css";
-import Accordion, { links as accordionLinks } from "~/components/Accordion";
+import { Accordion, AccordionContent, AccordionHeader, accordionLinks } from "~/components/Accordion";
 import PageHeader, { links as pageHeaderLinks } from "~/components/PageHeader";
+import PlayerTable, { Player, links as playerTableLinks } from "~/components/PlayerTable/PlayerTable";
 
 export const links: LinksFunction = () => {
-  return [...pageHeaderLinks(), ...accordionLinks(), { rel: "stylesheet", href: styles }];
+  return [...playerTableLinks(), ...pageHeaderLinks(), ...accordionLinks(), { rel: "stylesheet", href: styles }];
+};
+
+export const meta: MetaFunction = () => {
+  return { title: "Hall of Fame | Six Mans | UNCC Rocket League Esports" };
 };
 
 interface WinnerPlayer {
   Name: string;
   Wins: number;
   Losses: number;
+  MMR: number | undefined;
 }
 
-export const loader: LoaderFunction = async (): Promise<[string, Array<WinnerPlayer>][]> => {
-  const dataBaseUrl = "https://uncc-six-mans.s3.amazonaws.com/winners";
-  const winnerFiles = ["summer2020", "fall2020", "spring2021", "summer2021", "fall2021"];
+interface Season {
+  season: string;
+  fileName: string;
+  seasonEnded: string;
+}
 
-  const winners = new Map<string, Array<WinnerPlayer>>();
-  for (const seasonKey of winnerFiles) {
-    const fetchUrl = `${dataBaseUrl}/${seasonKey}.json`;
-    const seasonWinners = await fetch(fetchUrl).then((res) => res.json());
-    winners.set(seasonKey, seasonWinners);
+interface WinnerLoaderResponse {
+  seasonWinners: [string, Array<Player>][];
+  seasons: Record<string, Season>;
+}
+
+export const loader: LoaderFunction = async (): Promise<WinnerLoaderResponse> => {
+  const dataBaseUrl = "https://uncc-six-mans.s3.amazonaws.com/winners";
+  const seasons: Array<Season> = await fetch(`${dataBaseUrl}/seasons.json`).then((res) => res.json());
+
+  const winners = new Map<string, Array<Player>>();
+  for (const { season, fileName } of seasons) {
+    const seasonWinners: Array<WinnerPlayer> = await fetch(`${dataBaseUrl}/${fileName}`).then((res) => res.json());
+    const calculatedSeasonWinners: Array<Player> = seasonWinners.map((winner, index) => ({
+      rank: index + 1,
+      name: winner.Name,
+      mmr: winner.MMR ?? null,
+      wins: winner.Wins,
+      losses: winner.Losses,
+      matchesPlayed: winner.Wins + winner.Losses,
+      winPerc: winner.Wins / (winner.Wins + winner.Losses),
+    }));
+    winners.set(season, calculatedSeasonWinners);
   }
-  return Array.from(winners);
+
+  const seasonsRecord: Record<string, Season> = seasons.reduce((acc, season) => {
+    return {
+      ...acc,
+      [season.season]: season,
+    };
+  }, {});
+
+  return {
+    seasonWinners: Array.from(winners),
+    seasons: seasonsRecord,
+  };
 };
 
-function formatSemester(name: string) {
-  const yearIndex = name.indexOf("2");
-  const semester = name[0].toUpperCase() + name.substring(1, yearIndex);
-  const year = name.substring(yearIndex);
-  return `${semester} ${year}`;
-}
-
 function Winners() {
-  const winnerMap = useLoaderData<[string, Array<WinnerPlayer>][]>();
+  const { seasonWinners, seasons } = useLoaderData<WinnerLoaderResponse>();
 
   return (
     <>
       <PageHeader title="Hall of Fame" description="Top 5 players from previous Six Man seasons." />
       <section className="winnerAccordions">
-        {winnerMap.map(([season, winners], index) => (
-          <Accordion header={formatSemester(season)} key={season} defaultExpanded={index === 0}>
-            <ul style={{ margin: 0 }}>
-              {winners.map((winner, index) => (
-                <li key={`${season}-${winner.Name}`}>
-                  {index + 1}
-                  {winner.Name}
-                  {winner.Wins}
-                  {winner.Losses}
-                  {winner.Wins + winner.Losses}
-                  {winner.Wins / (winner.Wins + winner.Losses)}
-                </li>
-              ))}
-            </ul>
+        {seasonWinners.map(([season, winners], index) => (
+          <Accordion key={season} defaultExpanded={index === 0}>
+            <AccordionHeader>
+              <span>{seasons[season].season}</span>
+              <span className="seasonEnded">
+                Season Ended: <wbr />
+                {seasons[season].seasonEnded}
+              </span>
+            </AccordionHeader>
+            <AccordionContent>
+              <PlayerTable tableData={winners} />
+            </AccordionContent>
           </Accordion>
         ))}
       </section>

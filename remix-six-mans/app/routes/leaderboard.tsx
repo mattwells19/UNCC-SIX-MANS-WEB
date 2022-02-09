@@ -1,19 +1,47 @@
 import { useState, useMemo } from "react";
-import { LinksFunction } from "remix";
+import { LinksFunction, LoaderFunction, MetaFunction, useLoaderData } from "remix";
 import PageHeader, { links as pageHeaderLinks } from "~/components/PageHeader";
-import PlayerTable from "~/components/PlayerTable/PlayerTable";
+import PlayerTable, { links as playerTableLinks, Player } from "~/components/PlayerTable/PlayerTable";
 import SearchInput, { links as searchInputLinks } from "~/components/SearchInput";
 import styles from "~/styles/leaderboard.css";
 
 export const links: LinksFunction = () => {
-  return [...pageHeaderLinks(), ...searchInputLinks(), { rel: "stylesheet", href: styles }];
+  return [...playerTableLinks(), ...pageHeaderLinks(), ...searchInputLinks(), { rel: "stylesheet", href: styles }];
+};
+
+export const meta: MetaFunction = () => {
+  return { title: "Leaderboard | Six Mans | UNCC Rocket League Esports" };
+};
+
+interface LeaderboardData {
+  Name: string;
+  Wins: number;
+  Losses: number;
+  MMR: number;
+}
+
+export const loader: LoaderFunction = async (): Promise<Array<Player>> => {
+  const leaderboardUrl = "https://uncc-six-mans.s3.amazonaws.com/Leaderboard.json";
+  const leaderboardData: Array<LeaderboardData> = await fetch(leaderboardUrl).then((res) => res.json());
+  const calculatedRanks: Array<Player> = leaderboardData.map((player, index) => ({
+    rank: index + 1,
+    name: player.Name,
+    mmr: player.MMR ?? null,
+    wins: player.Wins,
+    losses: player.Losses,
+    matchesPlayed: player.Wins + player.Losses,
+    winPerc: player.Wins / (player.Wins + player.Losses),
+  }));
+  return calculatedRanks;
 };
 
 const Leaderboard = () => {
+  const players = useLoaderData<Array<Player>>();
   const [search, setSearch] = useState<string>("");
+
   const filteredData = useMemo(
-    () => data.filter((player) => player.name.toLowerCase().includes(search.toLowerCase())),
-    [search, data],
+    () => players.filter((player) => player.name.toLowerCase().includes(search.toLowerCase())),
+    [search, players],
   );
 
   return (
