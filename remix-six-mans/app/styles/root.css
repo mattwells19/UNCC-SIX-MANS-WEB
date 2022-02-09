@@ -1,0 +1,21 @@
+.main {
+  overflow: auto;
+}
+
+.main section {
+  margin: auto;
+  padding: 1rem 3rem;
+  max-width: clamp(30rem, 100%, 60rem);
+  /* @include responsive {
+    padding: 1rem;
+    max-width: none;
+  } */
+}
+
+.content {
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-template-rows: 100vh;
+
+  /* display: block; */
+}
