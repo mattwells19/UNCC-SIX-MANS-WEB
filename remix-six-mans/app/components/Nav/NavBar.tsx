@@ -3,7 +3,7 @@ import styles from "~/styles/navbar.css";
 import NavLink from "./NavLink";
 import CloseIcon from "../../icons/CloseIcon";
 import IconButton from "../IconButton";
-import { LinksFunction } from "remix";
+import { Link, LinksFunction } from "remix";
 // import { useNavbar } from "../../contexts/NavbarContext";
 
 export const links: LinksFunction = () => {
@@ -25,7 +25,12 @@ const NavBar = () => {
     <aside className={`navbar ${open ? "open" : ""}`}>
       <div>
         <div className="navHeader">
-          <h1>UNCC 6 Mans</h1>
+          <Link to="/general">
+            <h1>
+              <img src="/SixMansLogo.png" width="30" alt="Six Mans logo" />
+              UNCC 6 Mans
+            </h1>
+          </Link>
           <IconButton ref={closeBtnRef} /*onClick={() => setOpen(false)}*/ title="Close navigation drawer.">
             <CloseIcon />
           </IconButton>

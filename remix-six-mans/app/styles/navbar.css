@@ -37,6 +37,9 @@
 
 .navbar .navHeader h1 {
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .navbar ul {
