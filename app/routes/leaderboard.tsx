@@ -30,7 +30,7 @@ export const loader: LoaderFunction = async (): Promise<Array<Player>> => {
     wins: player.Wins,
     losses: player.Losses,
     matchesPlayed: player.Wins + player.Losses,
-    winPerc: player.Wins / (player.Wins + player.Losses),
+    winPerc: Math.round((player.Wins / (player.Wins + player.Losses)) * 100),
   }));
   return calculatedRanks;
 };

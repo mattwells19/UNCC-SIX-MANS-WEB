@@ -44,7 +44,7 @@ export const loader: LoaderFunction = async (): Promise<WinnerLoaderResponse> =>
       wins: winner.Wins,
       losses: winner.Losses,
       matchesPlayed: winner.Wins + winner.Losses,
-      winPerc: winner.Wins / (winner.Wins + winner.Losses),
+      winPerc: Math.round((winner.Wins / (winner.Wins + winner.Losses)) * 100),
     }));
     winners.set(season, calculatedSeasonWinners);
   }
