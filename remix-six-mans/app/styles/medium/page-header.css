@@ -1,0 +1,15 @@
+.header {
+  margin-bottom: 0.5rem;
+}
+
+.header div {
+  margin-left: 1rem;
+}
+
+.header div h1 {
+  font-size: 1.5rem;
+}
+
+.header div p {
+  font-size: 0.9rem;
+}

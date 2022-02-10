@@ -9,7 +9,7 @@
   height: 100%;
   background-color: var(--navBg);
   z-index: 2;
-  width: 15rem;
+  width: 16rem;
   transition: transform ease-in 150ms;
 }
 

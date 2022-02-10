@@ -1,0 +1,14 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.navbar > div {
+  display: none;
+}
+
+.navbar .navHeader button {
+  display: inherit;
+}

@@ -10,7 +10,7 @@ const AccordionContent: FC = ({ children }) => {
   return (
     <div
       className="accordionContent"
-      style={expanded ? { height: rect.height + 10, overflow: undefined } : { height: 0, overflow: "hidden" }}
+      style={expanded ? { height: rect.height + 5, overflow: undefined } : { height: 0, overflow: "hidden" }}
     >
       <div ref={contentRef}>{children}</div>
     </div>
