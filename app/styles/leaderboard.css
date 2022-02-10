@@ -1,0 +1,11 @@
+.leaderboard {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: calc(100vh - 5rem);
+}
+
+.leaderboardTable {
+  overflow-x: auto;
+}

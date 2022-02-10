@@ -1,0 +1,36 @@
+.searchInput {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.searchInput label {
+  color: var(--whiteAlpha-500);
+}
+
+.searchInput .inputContainer {
+  position: relative;
+}
+
+.searchInput .inputContainer input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--grey-200);
+  color: var(--white);
+  font-size: 1rem;
+  transition: box-shadow linear 50ms;
+  outline: none;
+  width: 100%;
+  text-indent: 30px;
+}
+
+.searchInput .inputContainer input:focus {
+  box-shadow: 0px 0px 0px 3px var(--focus-ring);
+}
+
+.searchInput .inputContainer svg {
+  position: absolute;
+  left: 10px;
+  bottom: calc(50% - 10px);
+}

@@ -1,5 +1,0 @@
-@mixin responsive($maxWidth: 600px) {
-  @media screen and (max-width: $maxWidth) {
-    @content;
-  }
-}
