@@ -6,13 +6,18 @@ interface IEmbedButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
 }
 
-const EmbedTitle: FC<IEmbedButtonProps> = ({ href, children, ...props }) => {
-  return (
+const EmbedButton: FC<IEmbedButtonProps> = ({ href, children, ...props }) => {
+  return href.startsWith("/") ? (
     <Link className="embedButton" to={href} {...props}>
       {children}
       <LinkIcon />
     </Link>
+  ) : (
+    <a className="embedButton" href={href} {...props}>
+      {children}
+      <LinkIcon />
+    </a>
   );
 };
 
-export default EmbedTitle;
+export default EmbedButton;
