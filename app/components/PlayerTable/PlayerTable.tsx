@@ -81,7 +81,7 @@ const PlayerTable = forwardRef<HTMLTableElement, IPlayerTableProps>(({ tableData
               <td align="center">{player.wins}</td>
               <td align="center">{player.losses}</td>
               <td align="center">{player.matchesPlayed}</td>
-              <td align="center">{Math.round(player.winPerc)}%</td>
+              <td align="center">{player.winPerc}%</td>
             </tr>
           );
         })}
