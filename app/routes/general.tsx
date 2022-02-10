@@ -10,7 +10,7 @@ export const links: LinksFunction = () => {
 function General() {
   return (
     <>
-      <PageHeader title="General" description="" />
+      <PageHeader title="General" description="The official Rocket league community at Charlotte." />
       <section className="home">
         <Embed>
           <EmbedContent title="Welcome to UNCC Six Mans!">

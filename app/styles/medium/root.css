@@ -1,5 +1,5 @@
 .main section {
   /* extra space on top for page header */
-  padding: 5rem 1rem 1rem 1rem;
+  padding: 15vh 1rem 1rem 1rem;
   max-width: none;
 }

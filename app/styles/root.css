@@ -4,7 +4,7 @@
 
 .main section {
   margin: auto;
-  padding: 7rem 3rem;
+  padding: 7rem 3rem 1rem 3rem;
   max-width: clamp(30rem, 100%, 60rem);
 }
 
