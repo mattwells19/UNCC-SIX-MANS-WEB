@@ -31,7 +31,7 @@ const NavBar = () => {
           <Link to="/general">
             <h1>
               <img src="/SixMansLogo.png" width="30" alt="Six Mans logo" />
-              UNCC 6 Mans
+              Niner Esports RL
             </h1>
           </Link>
           <IconButton ref={closeBtnRef} onClick={() => setOpen(false)} title="Close navigation drawer.">

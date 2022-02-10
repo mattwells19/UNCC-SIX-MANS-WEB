@@ -9,7 +9,7 @@ export const links: LinksFunction = () => {
 };
 
 export const meta: MetaFunction = () => {
-  return { title: "Hall of Fame | Six Mans | UNCC Rocket League Esports" };
+  return { title: "Hall of Fame | Six Mans | Niner Esports RL" };
 };
 
 interface WinnerPlayer {
@@ -67,7 +67,7 @@ function Winners() {
 
   return (
     <>
-      <PageHeader title="Hall of Fame" description="Top 5 players from previous Six Man seasons." />
+      <PageHeader title="Hall of Fame" description="Top 5 players from previous six mans seasons." />
       <section className="winnerAccordions">
         {seasonWinners.map(([season, winners], index) => (
           <Accordion key={season} defaultExpanded={index === 0}>

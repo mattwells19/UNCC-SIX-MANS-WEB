@@ -10,11 +10,11 @@ export const links: LinksFunction = () => {
 function General() {
   return (
     <>
-      <PageHeader title="General" description="The official Rocket league community at Charlotte." />
+      <PageHeader title="General" description="The official Rocket League community for Niner Esports." />
       <section className="home">
         <Embed>
-          <EmbedContent title="Welcome to UNCC Six Mans!">
-            <p>The official Rocket league community at Charlotte.</p>
+          <EmbedContent title="Welcome to Niner Esports RL!">
+            <p>The official Rocket League community for Niner Esports.</p>
           </EmbedContent>
         </Embed>
         <Embed>

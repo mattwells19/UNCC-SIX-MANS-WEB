@@ -10,7 +10,7 @@ export const links: LinksFunction = () => {
 };
 
 export const meta: MetaFunction = () => {
-  return { title: "Leaderboard | Six Mans | UNCC Rocket League Esports" };
+  return { title: "Leaderboard | Six Mans | Niner Esports RL" };
 };
 
 interface LeaderboardData {

@@ -8,7 +8,7 @@ import NavBar, { navLinks } from "./components/Nav";
 import { NavbarProvider } from "./contexts/NavbarContext";
 
 export const meta: MetaFunction = () => {
-  return { title: "Six Mans | UNCC Rocket League Esports" };
+  return { title: "Six Mans | Niner Esports RL" };
 };
 
 export const links: LinksFunction = () => {
