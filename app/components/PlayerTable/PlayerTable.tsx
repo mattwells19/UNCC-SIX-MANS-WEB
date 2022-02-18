@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import Th from "./Th";
 import useTableSort from "../../hooks/useTableSort";
-import styles from "~/styles/player-table.css";
+import styles from "./player-table.css";
 import { LinksFunction } from "remix";
 
 export const links: LinksFunction = () => {

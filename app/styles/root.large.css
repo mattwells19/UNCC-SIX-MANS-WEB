@@ -1,3 +1,9 @@
+/* root */
+.content {
+  display: block;
+}
+
+/* navbar */
 .navbar {
   position: fixed;
   top: 0;
@@ -10,5 +16,10 @@
 }
 
 .navbar .navHeader button {
+  display: inherit;
+}
+
+/* page header */
+.header button {
   display: inherit;
 }

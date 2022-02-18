@@ -2,13 +2,16 @@ import { Links, LinksFunction, LiveReload, Meta, Outlet, Scripts, ScrollRestorat
 import type { MetaFunction } from "remix";
 import globalStyles from "~/styles/global.css";
 import styles from "~/styles/root.css";
-import mdStyles from "~/styles/medium/root.css";
-import lgStyles from "~/styles/large/root.css";
-import NavBar, { navLinks } from "./components/Nav";
+import mdStyles from "~/styles/root.medium.css";
+import lgStyles from "~/styles/root.large.css";
+import NavBar from "./components/Nav";
 import { NavbarProvider } from "./contexts/NavbarContext";
 
 export const meta: MetaFunction = () => {
-  return { title: "Six Mans | Niner Esports RL" };
+  return {
+    title: "Six Mans | Niner Esports RL",
+    description: "The official Rocket League community for Niner Esports.",
+  };
 };
 
 export const links: LinksFunction = () => {
@@ -21,7 +24,6 @@ export const links: LinksFunction = () => {
     { rel: "stylesheet", href: styles },
     { rel: "stylesheet", href: mdStyles, media: "(max-width: 600px)" },
     { rel: "stylesheet", href: lgStyles, media: "(max-width: 1200px)" },
-    ...navLinks(),
   ];
 };
 
@@ -38,7 +40,7 @@ export default function App() {
         <NavbarProvider>
           <div className="content">
             <NavBar />
-            <main className="main">
+            <main>
               <Outlet />
             </main>
           </div>

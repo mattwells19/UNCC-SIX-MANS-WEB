@@ -1,8 +1,11 @@
-.main {
+/**
+ * root
+ */
+main {
   overflow: auto;
 }
 
-.main section {
+main section {
   margin: auto;
   padding: 7rem 3rem 1rem 3rem;
   max-width: clamp(30rem, 100%, 60rem);
@@ -12,4 +15,210 @@
   display: grid;
   grid-template-columns: min-content auto;
   grid-template-rows: 100vh;
+}
+
+/**
+ * routes
+ */
+
+/* Home/General */
+section.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2rem;
+
+  padding-bottom: 5rem;
+}
+
+section.home p {
+  margin-top: 1rem;
+  margin-bottom: 0px;
+  line-height: 1.5rem;
+}
+
+section.home ul {
+  list-style-type: none;
+}
+
+/* Winners/Hall of Fame page */
+section.winners {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  margin-top: 0.5rem;
+}
+
+section.winners .seasonEnded {
+  margin-left: auto;
+  margin-right: 3px;
+  text-align: right;
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--whiteAlpha-500);
+}
+
+/* Leaderboard */
+section.leaderboard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  max-height: calc(100vh - 5rem);
+  margin-top: 1rem;
+}
+
+section.leaderboard .leaderboardTable {
+  overflow-x: auto;
+}
+
+/**
+ * Components: Nav
+ */
+.hambugerMenu {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+}
+
+.navbar {
+  position: relative;
+  height: 100%;
+  background-color: var(--navBg);
+  z-index: 2;
+  width: 19rem;
+  transition: transform ease-in 150ms;
+}
+
+.navbar.open {
+  transform: translateX(0%);
+}
+
+.navbar.open > div {
+  display: inherit;
+}
+
+.navbar .navHeader {
+  padding: 0.5rem 1rem;
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  align-items: center;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.navbar .navHeader button {
+  display: none;
+}
+
+.navbar .navHeader h1 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem;
+}
+
+.credit {
+  position: absolute;
+  bottom: 0;
+  margin: 1rem;
+  color: var(--whiteAlpha-500);
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0.4rem 0.5rem;
+  margin-top: 0.25rem;
+  border-radius: 5px;
+
+  color: var(--whiteAlpha-500);
+  font-size: 1.2rem;
+
+  transition: background-color linear 25ms;
+}
+
+.navLink.active {
+  color: var(--white);
+  background-color: var(--grey-250);
+}
+
+.navLink:hover {
+  background-color: var(--grey-250);
+}
+
+/**
+ * Components: Page header
+ */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+  margin-bottom: 1rem;
+  position: fixed;
+  top: 0px;
+  background-color: var(--grey-300);
+}
+
+.header button {
+  display: none;
+}
+
+.header div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+  align-items: flex-start;
+  margin-left: 5rem;
+}
+
+.header div p,
+.header div h1 {
+  margin: 0;
+}
+
+.header div h1 {
+  display: flex;
+  align-items: center;
+}
+
+.header div h1 > svg {
+  margin-right: 0.5rem;
+}
+
+.header div p {
+  color: var(--whiteAlpha-500);
+  width: fit-content;
+}
+
+/**
+ * Components: Icon button
+ */
+.iconButton {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+}
+
+.iconButton:hover {
+  background-color: var(--grey-250);
 }

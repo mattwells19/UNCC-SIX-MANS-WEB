@@ -1,18 +1,9 @@
 import { useEffect, useRef } from "react";
-import styles from "~/styles/navbar.css";
-import lgStyles from "~/styles/large/navbar.css";
 import NavLink from "./NavLink";
 import CloseIcon from "../../icons/CloseIcon";
 import IconButton from "../IconButton";
-import { Link, LinksFunction } from "remix";
+import { Link } from "remix";
 import { useNavbar } from "~/contexts/NavbarContext";
-
-export const links: LinksFunction = () => {
-  return [
-    { rel: "stylesheet", href: styles },
-    { rel: "stylesheet", href: lgStyles, media: "(max-width: 1200px)" },
-  ];
-};
 
 const NavBar = () => {
   const { open, setOpen } = useNavbar();

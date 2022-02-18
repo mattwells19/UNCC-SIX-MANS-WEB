@@ -1,10 +1,9 @@
-import styles from "~/styles/home.css";
-import PageHeader, { links as pageHeaderLinks } from "~/components/PageHeader";
+import PageHeader from "~/components/PageHeader";
 import { Embed, EmbedButton, EmbedContent, embedLinks } from "~/components/Embed";
 import { LinksFunction } from "remix";
 
 export const links: LinksFunction = () => {
-  return [...pageHeaderLinks(), ...embedLinks(), { rel: "stylesheet", href: styles }];
+  return [...embedLinks()];
 };
 
 function General() {

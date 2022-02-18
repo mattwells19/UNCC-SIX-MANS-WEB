@@ -1,15 +1,17 @@
 import { LinksFunction, LoaderFunction, MetaFunction, useLoaderData } from "remix";
-import styles from "~/styles/winners.css";
 import { Accordion, AccordionContent, AccordionHeader, accordionLinks } from "~/components/Accordion";
-import PageHeader, { links as pageHeaderLinks } from "~/components/PageHeader";
+import PageHeader from "~/components/PageHeader";
 import PlayerTable, { Player, links as playerTableLinks } from "~/components/PlayerTable/PlayerTable";
 
 export const links: LinksFunction = () => {
-  return [...playerTableLinks(), ...pageHeaderLinks(), ...accordionLinks(), { rel: "stylesheet", href: styles }];
+  return [...playerTableLinks(), ...accordionLinks()];
 };
 
 export const meta: MetaFunction = () => {
-  return { title: "Hall of Fame | Six Mans | Niner Esports RL" };
+  return {
+    title: "Hall of Fame | Six Mans | Niner Esports RL",
+    description: "Top 5 players from previous six mans seasons.",
+  };
 };
 
 interface WinnerPlayer {
@@ -68,7 +70,7 @@ function Winners() {
   return (
     <>
       <PageHeader title="Hall of Fame" description="Top 5 players from previous six mans seasons." />
-      <section className="winnerAccordions">
+      <section className="winners">
         {seasonWinners.map(([season, winners], index) => (
           <Accordion key={season} defaultExpanded={index === 0}>
             <AccordionHeader>

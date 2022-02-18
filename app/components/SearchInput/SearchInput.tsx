@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
-import SearchIcon from "../icons/SearchIcon";
-import styles from "~/styles/search-input.css";
+import SearchIcon from "../../icons/SearchIcon";
+import styles from "./search-input.css";
 import { LinksFunction } from "remix";
 
 export const links: LinksFunction = () => {

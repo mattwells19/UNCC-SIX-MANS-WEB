@@ -1,16 +1,18 @@
 import { useState, useMemo } from "react";
 import { LinksFunction, LoaderFunction, MetaFunction, useLoaderData } from "remix";
-import PageHeader, { links as pageHeaderLinks } from "~/components/PageHeader";
+import PageHeader from "~/components/PageHeader";
 import PlayerTable, { links as playerTableLinks, Player } from "~/components/PlayerTable/PlayerTable";
 import SearchInput, { links as searchInputLinks } from "~/components/SearchInput";
-import styles from "~/styles/leaderboard.css";
 
 export const links: LinksFunction = () => {
-  return [...playerTableLinks(), ...pageHeaderLinks(), ...searchInputLinks(), { rel: "stylesheet", href: styles }];
+  return [...playerTableLinks(), ...searchInputLinks()];
 };
 
 export const meta: MetaFunction = () => {
-  return { title: "Leaderboard | Six Mans | Niner Esports RL" };
+  return {
+    title: "Leaderboard | Six Mans | Niner Esports RL",
+    description: "The leaderboard for the current six mans season.",
+  };
 };
 
 interface LeaderboardData {

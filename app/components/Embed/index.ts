@@ -3,8 +3,8 @@ export { default as EmbedContent } from "./EmbedContent";
 export { default as EmbedButton } from "./EmbedButton";
 
 import { LinksFunction } from "remix";
-import styles from "~/styles/embed.css";
-import mdStyles from "~/styles/medium/embed.css";
+import styles from "./embed.css";
+import mdStyles from "./embed.medium.css";
 
 export const embedLinks: LinksFunction = () => {
   return [

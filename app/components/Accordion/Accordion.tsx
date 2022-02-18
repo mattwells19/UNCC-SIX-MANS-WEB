@@ -1,5 +1,5 @@
 import { createContext, Dispatch, FC, SetStateAction, useContext, useState } from "react";
-import styles from "~/styles/accordion.css";
+import styles from "./accordion.css";
 import { LinksFunction } from "remix";
 
 interface AccordionContext {
